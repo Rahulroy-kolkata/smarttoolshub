@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartToolsHub</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+<h2>SmartToolsHub</h2>
+
+<nav>
+<a href="#">Home</a>
+<a href="#">Tools</a>
+<a href="about.html">About</a>
+<a href="privacy.html">Privacy</a>
+<a href="terms.html">Terms</a>
+<a href="#">Contact</a>
+</nav>
+<button id="darkBtn" onclick="toggleDarkMode()">
+🌙 Dark Mode
+</button>
+</header>
+<div class="search-box">
+
+<input
+type="text"
+id="search"
+placeholder="Search Tool..."
+onkeyup="searchTools()">
+
+</div>
+<section class="hero">
+
+<h1>🚀 SmartToolsHub</h1>
+
+<p>Free Online Calculators, PDF Tools, Image Tools & More.</p>
+
+<div class="hero-buttons">
+
+<button onclick="scrollToTools()">Explore Tools</button>
+
+<button onclick="window.scrollTo(0,document.body.scrollHeight)">
+Contact Us
+</button>
+
+</div>
+
+</section>
+
+<h1>Welcome to SmartToolsHub</h1>
+
+<p>100% Free Online Tools</p>
+
+<button onclick="scrollToTools()">Explore Tools</button>
+
+</section>
+<h2 style="text-align:center;">📂 Tool Categories</h2>
+
+<div class="categories">
+
+<div class="card">🧮 Calculators</div>
+
+<div class="card">💰 Finance</div>
+
+<div class="card">🔐 Security</div>
+
+<div class="card">📱 Utilities</div>
+
+</div>
+
+<hr>
+<div class="tool">
+
+<h2>Age Calculator</h2>
+
+<input type="date" id="dob">
+
+<br><br>
+
+<button onclick="calculateAge()">
+Calculate Age
+</button>
+
+<p id="result"></p>
+
+</div>
+
+<hr>
+
+<div class="tool">
+
+<h2>BMI Calculator</h2>
+
+<input type="number" id="weight" placeholder="Weight (kg)">
+
+<br><br>
+
+<input type="number" id="height" placeholder="Height (cm)">
+
+<br><br>
+
+<button onclick="calculateBMI()">
+Calculate BMI
+</button>
+
+<p id="bmiResult"></p>
+
+</div>
+
+<hr>
+
+<div class="tool">
+
+<h2>EMI Calculator</h2>
+
+<input type="number" id="loan" placeholder="Loan Amount">
+
+<br><br>
+
+<input type="number" id="interest" placeholder="Interest Rate (%)">
+
+<br><br>
+
+<input type="number" id="months" placeholder="Loan Months">
+
+<br><br>
+
+<button onclick="calculateEMI()">
+Calculate EMI
+</button>
+
+<p id="emiResult"></p>
+
+</div>
+<hr>
+
+<div class="tool">
+
+<h2>Password Generator</h2>
+
+<input type="number" id="length" placeholder="Password Length">
+
+<br><br>
+
+<button onclick="generatePassword()">
+Generate Password
+</button>
+
+<p id="passwordResult"></p>
+
+</div>
+<hr>
+
+<div class="tool">
+
+<h2>Percentage Calculator</h2>
+
+<input type="number" id="obtained" placeholder="Obtained Marks">
+
+<br><br>
+
+<input type="number" id="total" placeholder="Total Marks">
+
+<br><br>
+
+<button onclick="calculatePercentage()">
+Calculate Percentage
+</button>
+
+<p id="percentageResult"></p>
+
+</div>
+<hr>
+
+<div class="tool">
+
+<h2>GST Calculator</h2>
+
+<input type="number" id="amount" placeholder="Amount">
+
+<br><br>
+
+<input type="number" id="gst" placeholder="GST %">
+
+<br><br>
+
+<button onclick="calculateGST()">
+Calculate GST
+</button>
+
+<p id="gstResult"></p>
+
+</div>
+<hr>
+
+<div class="tool">
+
+<h2>Discount Calculator</h2>
+
+<input type="number" id="originalPrice" placeholder="Original Price">
+
+<br><br>
+
+<input type="number" id="discount" placeholder="Discount %">
+
+<br><br>
+
+<button onclick="calculateDiscount()">
+Calculate Discount
+</button>
+
+<p id="discountResult"></p>
+
+</div>
+<hr>
+
+<div class="tool">
+
+<h2>QR Code Generator</h2>
+
+<input type="text" id="qrText" placeholder="Enter Text or URL">
+
+<br><br>
+
+<button onclick="generateQR()">
+Generate QR Code
+</button>
+
+<br><br>
+
+<img id="qrImage" width="200">
+
+</div>
+<footer>
+
+<h3>SmartToolsHub</h3>
+
+<p>Free Online Tools for Everyone</p>
+
+<p>© 2026 SmartToolsHub. All Rights Reserved.</p>
+
+</footer>
+<button id="topBtn" onclick="topFunction()">
+⬆ Top
+</button>
+<script src="script.js"></script>
+
+</body>
+</html>
