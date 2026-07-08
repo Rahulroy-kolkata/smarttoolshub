@@ -4,60 +4,58 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SmartToolsHub</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/script.js"></script>
+<img src="image/logo.png">
 </head>
 
 <body>
 
 <header>
-<h2>SmartToolsHub</h2>
+    <img src="image/logo.png" class="logo" alt="SmartToolsHub Logo">
 
-<nav>
-<a href="#">Home</a>
-<a href="#">Tools</a>
-<a href="about.html">About</a>
-<a href="privacy.html">Privacy</a>
-<a href="terms.html">Terms</a>
-<a href="#">Contact</a>
-</nav>
-<button id="darkBtn" onclick="toggleDarkMode()">
-🌙 Dark Mode
-</button>
+    <h2>SmartToolsHub</h2>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#tools">Tools</a>
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <button id="darkBtn" onclick="toggleDarkMode()">
+        🌙 Dark Mode
+    </button>
 </header>
+
 <div class="search-box">
-
-<input
-type="text"
-id="search"
-placeholder="Search Tool..."
-onkeyup="searchTools()">
-
+    <input
+        type="text"
+        id="search"
+        placeholder="Search Tool..."
+        onkeyup="searchTools()">
 </div>
-<section class="hero">
 
-<h1>🚀 SmartToolsHub</h1>
+<section class="hero" id="home">
 
-<p>Free Online Calculators, PDF Tools, Image Tools & More.</p>
+    <h1>🚀 SmartToolsHub</h1>
 
-<div class="hero-buttons">
+    <p>Free Online Calculators, PDF Tools, Image Tools & More.</p>
 
-<button onclick="scrollToTools()">Explore Tools</button>
+    <div class="hero-buttons">
+        <button onclick="scrollToTools()">Explore Tools</button>
 
-<button onclick="window.scrollTo(0,document.body.scrollHeight)">
-Contact Us
-</button>
-
-</div>
+        <button onclick="window.scrollTo(0,document.body.scrollHeight)">
+            Contact Us
+        </button>
+    </div>
 
 </section>
 
-<h1>Welcome to SmartToolsHub</h1>
+<section id="tools">
 
-<p>100% Free Online Tools</p>
-
-<button onclick="scrollToTools()">Explore Tools</button>
-
-</section>
 <h2 style="text-align:center;">📂 Tool Categories</h2>
 
 <div class="categories">
@@ -235,7 +233,10 @@ Generate QR Code
 <img id="qrImage" width="200">
 
 </div>
-<footer>
+
+</section>
+
+<footer id="contact">
 
 <h3>SmartToolsHub</h3>
 
@@ -244,10 +245,17 @@ Generate QR Code
 <p>© 2026 SmartToolsHub. All Rights Reserved.</p>
 
 </footer>
+
 <button id="topBtn" onclick="topFunction()">
 ⬆ Top
 </button>
-<script src="script.js"></script>
 
+<script src="js/script.js"></script>
+<script>
+if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("service-worker.js")
+    .then(() => console.log("Service Worker Registered"));
+}
+</script>
 </body>
 </html>

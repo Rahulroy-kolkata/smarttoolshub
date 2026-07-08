@@ -1,0 +1,21 @@
+{
+  "name": "SmartToolsHub",
+  "short_name": "SmartToolsHub",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2962ff",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "image/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "image/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -45,7 +45,7 @@ document.getElementById("bmiResult").innerHTML =
 }
 function scrollToTools(){
 
-document.querySelector(".tool").scrollIntoView({
+document.getElementById("tools").scrollIntoView({
 
 behavior:"smooth"
 
