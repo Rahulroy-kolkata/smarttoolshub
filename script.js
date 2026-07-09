@@ -260,3 +260,35 @@ window.addEventListener("beforeinstallprompt", (e) => {
         });
     }
 });
+
+function convertKM(){
+
+let km = parseFloat(document.getElementById("km").value);
+
+if(isNaN(km)){
+alert("Please Enter Kilometers");
+return;
+}
+
+let miles = km * 0.621371;
+
+document.getElementById("kmResult").innerHTML =
+km + " KM = " + miles.toFixed(2) + " Miles";
+
+}
+
+function convertMiles(){
+
+let miles = parseFloat(document.getElementById("miles").value);
+
+if(isNaN(miles)){
+alert("Please Enter Miles");
+return;
+}
+
+let km = miles * 1.60934;
+
+document.getElementById("mileResult").innerHTML =
+miles + " Miles = " + km.toFixed(2) + " KM";
+
+}
