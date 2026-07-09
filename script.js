@@ -314,3 +314,120 @@ document.getElementById("randomResult").innerHTML =
 "🎉 Random Number: " + random;
 
 }
+// ===== Snake Game Variables =====
+
+let canvas;
+let ctx;
+
+let snake;
+let food;
+
+let dx = 20;
+let dy = 0;
+
+let score = 0;
+let gameLoop;
+
+function startSnakeGame(){
+
+canvas = document.getElementById("snakeGame");
+ctx = canvas.getContext("2d");
+
+snake = [
+{x:160,y:160}
+];
+
+food = {
+x: Math.floor(Math.random()*16)*20,
+y: Math.floor(Math.random()*16)*20
+};
+
+dx = 20;
+dy = 0;
+score = 0;
+
+document.getElementById("snakeScore").innerHTML =
+"Score : " + score;
+
+clearInterval(gameLoop);
+
+document.addEventListener("keydown",changeDirection);
+
+gameLoop = setInterval(drawSnake,150);
+
+}
+function drawSnake(){
+
+ctx.clearRect(0,0,320,320);
+
+ctx.fillStyle="red";
+ctx.fillRect(food.x,food.y,20,20);
+
+ctx.fillStyle="lime";
+
+for(let i=0;i<snake.length;i++){
+ctx.fillRect(snake[i].x,snake[i].y,20,20);
+}
+
+let head={
+x:snake[0].x+dx,
+y:snake[0].y+dy
+};
+
+if(head.x==food.x && head.y==food.y){
+
+score++;
+
+document.getElementById("snakeScore").innerHTML =
+"Score : "+score;
+
+food={
+x:Math.floor(Math.random()*16)*20,
+y:Math.floor(Math.random()*16)*20
+};
+
+}else{
+
+snake.pop();
+
+}
+
+snake.unshift(head);
+
+if(
+head.x<0 ||
+head.y<0 ||
+head.x>=320 ||
+head.y>=320
+){
+
+clearInterval(gameLoop);
+
+alert("Game Over! Score : "+score);
+
+}
+
+}
+function changeDirection(e){
+
+if(e.key=="ArrowLeft" && dx==0){
+dx=-20;
+dy=0;
+}
+
+if(e.key=="ArrowUp" && dy==0){
+dx=0;
+dy=-20;
+}
+
+if(e.key=="ArrowRight" && dx==0){
+dx=20;
+dy=0;
+}
+
+if(e.key=="ArrowDown" && dy==0){
+dx=0;
+dy=20;
+}
+
+}
