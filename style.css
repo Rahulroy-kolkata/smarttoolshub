@@ -266,15 +266,4 @@ header{
     justify-content:space-between;
     flex-wrap:wrap;
 }
-#snakeControls{
-text-align:center;
-margin-top:15px;
-}
 
-#snakeControls button{
-width:60px;
-height:60px;
-font-size:28px;
-margin:5px;
-border-radius:12px;
-}
