@@ -292,3 +292,25 @@ document.getElementById("mileResult").innerHTML =
 miles + " Miles = " + km.toFixed(2) + " KM";
 
 }
+function generateRandom(){
+
+let min = parseInt(document.getElementById("min").value);
+
+let max = parseInt(document.getElementById("max").value);
+
+if(isNaN(min) || isNaN(max)){
+alert("Please Enter Both Numbers");
+return;
+}
+
+if(min >= max){
+alert("Maximum Number must be greater than Minimum Number");
+return;
+}
+
+let random = Math.floor(Math.random() * (max - min + 1)) + min;
+
+document.getElementById("randomResult").innerHTML =
+"🎉 Random Number: " + random;
+
+}
