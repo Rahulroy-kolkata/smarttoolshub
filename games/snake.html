@@ -1,46 +1,42 @@
-body{
-margin:0;
-padding:0;
-background:#111;
-color:#fff;
-font-family:Arial,sans-serif;
-text-align:center;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-h1{
-margin:20px 0;
-}
+<title>Snake Game - SmartToolsHub</title>
 
-#game{
-display:flex;
-justify-content:center;
-align-items:center;
-}
+<link rel="stylesheet" href="snake.css">
+</head>
 
-canvas{
-background:#000;
-border:4px solid #00ff66;
-border-radius:12px;
-max-width:95vw;
-max-height:70vh;
-touch-action:none;
-}
+<body>
 
-.info{
-margin-top:20px;
-}
+<h1>🐍 Snake Game</h1>
 
-button{
-padding:12px 25px;
-margin:8px;
-font-size:18px;
-border:none;
-border-radius:10px;
-background:#00c853;
-color:#fff;
-cursor:pointer;
-}
+<div id="game">
 
-button:hover{
-background:#00e676;
-}
+<canvas id="canvas" width="400" height="400"></canvas>
+
+</div>
+
+<div class="info">
+
+<h2>
+🪙 Coins :
+<span id="score">0</span>
+</h2>
+
+<button onclick="startGame()">
+▶ Start Game
+</button>
+
+<button onclick="restartGame()">
+🔄 Restart
+</button>
+
+</div>
+
+<script src="snake.js"></script>
+
+</body>
+</html>
