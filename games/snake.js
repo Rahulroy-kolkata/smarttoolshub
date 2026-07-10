@@ -1,61 +1,88 @@
-const canvas = document.getElementById("canvas");
+const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
-const box = 20;
+const gridSize = 20;
+const tileCount = 20;
 
-let snake = [
-    {x:200,y:200}
-];
-
+let snake = [];
+let food = {};
 let direction = "RIGHT";
-
 let score = 0;
-
-let coin = {
-    x: Math.floor(Math.random()*20)*box,
-    y: Math.floor(Math.random()*20)*box
-};
-
-let game;
+let speed = 180;
+let game = null;
 
 function startGame(){
 
 clearInterval(game);
 
-snake=[
-{x:200,y:200}
+snake = [
+    {x:200,y:200}
 ];
 
-direction="RIGHT";
+direction = "RIGHT";
+score = 0;
+speed = 180;
 
-score=0;
+document.getElementById("score").textContent = score;
 
-document.getElementById("score").innerHTML="🪙 Coins : 0";
+spawnFood();
 
-coin={
-x:Math.floor(Math.random()*20)*box,
-y:Math.floor(Math.random()*20)*box
-};
-
-game=setInterval(drawGame,180);
+game = setInterval(drawGame, speed);
 
 }
 
+function restartGame(){
+
+clearInterval(game);
+
+startGame();
+
+}
+
+function spawnFood(){
+
+food = {
+
+x:Math.floor(Math.random()*tileCount)*gridSize,
+
+y:Math.floor(Math.random()*tileCount)*gridSize
+
+};
+
+}
+
+function setDirection(dir){
+
+if(dir=="LEFT" && direction!="RIGHT") direction="LEFT";
+
+if(dir=="RIGHT" && direction!="LEFT") direction="RIGHT";
+
+if(dir=="UP" && direction!="DOWN") direction="UP";
+
+if(dir=="DOWN" && direction!="UP") direction="DOWN";
+
+}
 function drawGame(){
 
-ctx.fillStyle="#000";
-ctx.fillRect(0,0,400,400);
+ctx.clearRect(0,0,canvas.width,canvas.height);
 
+// Draw Food
 ctx.fillStyle="red";
 ctx.beginPath();
-ctx.arc(coin.x+10,coin.y+10,8,0,Math.PI*2);
+ctx.arc(food.x+10,food.y+10,8,0,Math.PI*2);
 ctx.fill();
 
+// Draw Snake
 ctx.fillStyle="#00ff66";
 
 for(let i=0;i<snake.length;i++){
 
-ctx.fillRect(snake[i].x,snake[i].y,20,20);
+ctx.fillRect(
+snake[i].x,
+snake[i].y,
+gridSize,
+gridSize
+);
 
 }
 
@@ -64,26 +91,27 @@ x:snake[0].x,
 y:snake[0].y
 };
 
-if(direction=="RIGHT") head.x+=20;
-if(direction=="LEFT") head.x-=20;
-if(direction=="UP") head.y-=20;
-if(direction=="DOWN") head.y+=20;
+if(direction=="RIGHT") head.x+=gridSize;
+if(direction=="LEFT") head.x-=gridSize;
+if(direction=="UP") head.y-=gridSize;
+if(direction=="DOWN") head.y+=gridSize;
 
-if(head.x==coin.x && head.y==coin.y){
+snake.unshift(head);
+
+// Food Collision
+if(head.x==food.x && head.y==food.y){
 
 score++;
 
-document.getElementById("score").innerHTML=
-"🪙 Coins : "+score;
+document.getElementById("score").textContent=score;
+
+spawnFood();
+
 clearInterval(game);
 
-let speed = Math.max(60, 180 - (score * 5));
+speed=Math.max(60,speed-5);
 
-game = setInterval(drawGame, speed);
-coin={
-x:Math.floor(Math.random()*20)*20,
-y:Math.floor(Math.random()*20)*20
-};
+game=setInterval(drawGame,speed);
 
 }else{
 
@@ -91,50 +119,37 @@ snake.pop();
 
 }
 
-snake.unshift(head);
-for(let i=1;i<snake.length;i++){
-
-if(head.x==snake[i].x && head.y==snake[i].y){
-
-clearInterval(game);
-
-alert("💀 Game Over!\n\n🪙 Coins : "+score);
-
-return;
-
-}
-
-}
+// Wall Collision
 if(
 head.x<0||
 head.y<0||
-head.x>=400||
-head.y>=400
+head.x>=canvas.width||
+head.y>=canvas.height
 ){
 
 clearInterval(game);
 
-alert("Game Over\nCoins : "+score);
+alert("💀 Game Over!\n\n🪙 Coins : "+score);
 
 }
 
 }
 document.addEventListener("keydown",function(e){
 
-if(e.key=="ArrowLeft" && direction!="RIGHT"){
-direction="LEFT";
+if(e.key=="ArrowLeft"){
+setDirection("LEFT");
 }
 
-if(e.key=="ArrowRight" && direction!="LEFT"){
-direction="RIGHT";
+if(e.key=="ArrowRight"){
+setDirection("RIGHT");
 }
 
-if(e.key=="ArrowUp" && direction!="DOWN"){
-direction="UP";
+if(e.key=="ArrowUp"){
+setDirection("UP");
 }
 
-if(e.key=="ArrowDown" && direction!="UP"){
-direction="DOWN";
+if(e.key=="ArrowDown"){
+setDirection("DOWN");
 }
 
 });
