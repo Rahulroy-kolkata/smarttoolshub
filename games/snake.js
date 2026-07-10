@@ -73,16 +73,93 @@ ctx.arc(food.x+10,food.y+10,8,0,Math.PI*2);
 ctx.fill();
 
 // Draw Snake
-ctx.fillStyle="#00ff66";
-
 for(let i=0;i<snake.length;i++){
 
-ctx.fillRect(
-snake[i].x,
-snake[i].y,
-gridSize,
-gridSize
+if(i==0){
+
+// Snake Head
+
+ctx.fillStyle="#00cc44";
+
+ctx.beginPath();
+
+ctx.arc(
+snake[i].x+10,
+snake[i].y+10,
+10,
+0,
+Math.PI*2
 );
+
+ctx.fill();
+
+// Left Eye
+
+ctx.fillStyle="white";
+
+ctx.beginPath();
+
+ctx.arc(
+snake[i].x+6,
+snake[i].y+7,
+2,
+0,
+Math.PI*2
+);
+
+ctx.fill();
+
+// Right Eye
+
+ctx.beginPath();
+
+ctx.arc(
+snake[i].x+14,
+snake[i].y+7,
+2,
+0,
+Math.PI*2
+);
+
+ctx.fill();
+// Tongue
+
+ctx.strokeStyle="red";
+
+ctx.lineWidth=2;
+
+ctx.beginPath();
+
+ctx.moveTo(
+snake[i].x+10,
+snake[i].y+18
+);
+
+ctx.lineTo(
+snake[i].x+10,
+snake[i].y+24
+);
+
+ctx.stroke();
+}else{
+
+// Snake Body
+
+ctx.fillStyle="#22ff66";
+
+ctx.beginPath();
+
+ctx.arc(
+snake[i].x+10,
+snake[i].y+10,
+9,
+0,
+Math.PI*2
+);
+
+ctx.fill();
+
+}
 
 }
 
