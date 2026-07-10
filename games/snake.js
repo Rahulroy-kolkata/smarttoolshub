@@ -108,8 +108,9 @@ document.getElementById("score").textContent=score;
 spawnFood();
 
 clearInterval(game);
-
-speed=Math.max(60,speed-5);
+if(score % 10 == 0){
+    speed = Math.max(120, speed - 10);
+}
 
 game=setInterval(drawGame,speed);
 
